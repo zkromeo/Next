@@ -1,16 +1,19 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import burger from '../images/icons/hamburger.jpg'
+import burger from '../images/icons/hamburger.jpg';
 
 function Navbar() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
+
+    // Initial check on mount
+    handleResize();
 
     window.addEventListener('resize', handleResize);
 
@@ -22,6 +25,7 @@ function Navbar() {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
 
   return (
     <header className="text-white body-font bg-[#285788]">
